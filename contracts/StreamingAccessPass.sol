@@ -4,7 +4,6 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 
 /**
  * @title StreamingAccessPass
@@ -12,8 +11,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
  * Each NFT represents access to specific sports events with AR/VR features
  */
 contract StreamingAccessPass is ERC721, ERC721URIStorage, Ownable {
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIdCounter;
+    uint256 private _tokenIdCounter;
     
     struct AccessPass {
         uint256 eventId;
@@ -49,8 +47,8 @@ contract StreamingAccessPass is ERC721, ERC721URIStorage, Ownable {
         require(to != address(0), "Invalid address");
         require(duration > 0, "Duration must be greater than 0");
         
-        uint256 tokenId = _tokenIdCounter.current();
-        _tokenIdCounter.increment();
+        uint256 tokenId = _tokenIdCounter;
+        _tokenIdCounter++;
         
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
