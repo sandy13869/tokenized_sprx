@@ -237,5 +237,5 @@ This project is released under the **MIT License**.
 
 ## Author
 **Tokenized_SPRX Prototype**  
-Developed by [Your Name or Team]  
+Developed by [YSandy13869]  
 © 2025, All rights reserved.
